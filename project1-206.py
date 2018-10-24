@@ -40,6 +40,13 @@ test = getData('P1DataA.csv')
 
 
 def mySort(data,col):
+	sorted_list = sorted(data, key = lambda x: x[col])
+	dic_object = sorted_list[0]
+	first = dic_object['First']
+	last = dic_object['Last']
+	str = "{} {}".format(first,last)
+	return str
+
 
 
 # Sort based on key/column
@@ -116,7 +123,7 @@ def findMonth(a):
 		# print(max)
 	# print(d)
 
-findMonth(test)
+# findMonth(test)
 # Find the most common birth month from this data
 # Input: list of dictionaries
 # Output: Return the month (1-12) that had the most births in the data
@@ -124,6 +131,14 @@ findMonth(test)
 
 
 def mySortPrint(a,col,fileName):
+	outFile = open(fileName, 'w')
+	sorted_list = sorted(a, key = lambda x: x[col])
+	dic_object = sorted_list[0]
+	first = dic_object['First']
+	last = dic_object['Last']
+	email = dic_object['Email']
+	str = "{} {} {}".format(first,last,email)
+	outFile.write(str)
 #Similar to mySort, but instead of returning single
 #Student, the sorted data is saved to a csv file.
 # as fist,last,email
